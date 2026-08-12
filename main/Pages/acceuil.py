@@ -49,7 +49,7 @@ avertissement.write("Cette platforme est utiliser pour différent projet.")
 avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corrigées pour que les autres ne les rencontres pas.")
 
 if st.session_state.jeulancé == False :
-    st.write("Version 0.0.0")
+    st.write("Version 0.0.1")
 
     st.markdown("""
                 -**0.0.0**  
