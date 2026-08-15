@@ -3,7 +3,7 @@
 #   Olivier Moreau
 #
 
-from Banque_de_question import bqmétéo, bqtdv, bqrac, bqnav
+from Banque_de_question import bqmétéo      #, bqtdv, bqrac, bqnav
 import streamlit as st
 from jeu import jeu
 
@@ -15,9 +15,9 @@ def choix_des_questions() :
 
     matière_dispo = {
         "météo" : ("La météo", bqmétéo),
-        "théorie_du_vol" : ("La théorie du vol", bqtdv),
-        "règlementation" : ("RAC", bqrac),
-        "navigation" : ("Nav", bqnav)
+#        "théorie_du_vol" : ("La théorie du vol", bqtdv),
+#        "règlementation" : ("RAC", bqrac),
+#        "navigation" : ("Nav", bqnav)
     }
 
     for matière, (nom_matière, _) in matière_dispo.items() :
@@ -49,7 +49,7 @@ avertissement.write("Cette platforme est utiliser pour différent projet.")
 avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corrigées pour que les autres ne les rencontres pas.")
 
 if st.session_state.jeulancé == False :
-    st.write("Version 0.0.1")
+    st.write("Version 0.0.2")
 
     st.markdown("""
                 -**0.0.0**  
