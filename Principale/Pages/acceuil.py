@@ -3,7 +3,7 @@
 #   Olivier Moreau
 #
 
-from Banque_de_question import bqmétéo      #, bqtdv, bqrac, bqnav
+from Banque_de_question.bqmétéo import categorie
 import streamlit as st
 from jeu import jeu
 
@@ -14,7 +14,7 @@ if st.session_state.jeulancé == False :
 def choix_des_questions() :
 
     matière_dispo = {
-        "météo" : ("La météo", bqmétéo),
+        "météo" : ("La météo"),
 #        "théorie_du_vol" : ("La théorie du vol", bqtdv),
 #        "règlementation" : ("RAC", bqrac),
 #        "navigation" : ("Nav", bqnav)
@@ -24,18 +24,27 @@ def choix_des_questions() :
         st.checkbox(nom_matière, key = matière)
 
     if st.button("Choisir ces matières") :
-        for matière in matière_dispo.keys():
-            if st.session_state[matière] :
-                st.session_state.bqjeu += matière_dispo[matière][1]
 
-        if not st.session_state.bqjeu:
-            st.warning("Veuillez sélectionner des thèmes")
-            return
+        if st.session_state.get("météo", False):
+            st.subheader("Choisissez les thèmes de la matière météo")
 
-        st.session_state.no_q
-        st.session_state.nbquestion = len(st.session_state.bqjeu)
-        st.session_state.jeulancé = True
-        st.rerun()
+            # Afficher les thèmes
+            for theme in categorie.keys():
+                st.checkbox(theme, key=f"theme_{theme}")
+
+            if st.button("Choisir ces thèmes"):
+                for theme, questions in categorie.items():
+                    if st.session_state.get(f"theme_{theme}", False):
+                        st.session_state.bqjeu += questions
+
+                if not st.session_state.bqjeu:
+                    st.warning("Veuillez sélectionner au moins un thème")
+                    return
+
+                st.session_state.no_q = 0
+                st.session_state.nbquestion = len(st.session_state.bqjeu)
+                st.session_state.jeulancé = True
+                st.rerun()
 
 if st.session_state.jeulancé == False :
     choix_des_questions()
@@ -49,7 +58,7 @@ avertissement.write("Cette platforme est utiliser pour différent projet.")
 avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corrigées pour que les autres ne les rencontres pas.")
 
 if st.session_state.jeulancé == False :
-    st.write("Version 0.0.2")
+    st.write("Version 0.0.4")
 
     st.markdown("""
                 -**0.0.0**  
