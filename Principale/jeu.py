@@ -120,8 +120,9 @@ def jeu() :
         st.success(f"Bravo! Votre score est de {st.session_state.scoretotal} sur {st.session_state.no_q * 3}.")
         if st.button("Retourner au choix des matières"):
             reset_jeu()
-            
-    st.subheader(f"Question {st.session_state.no_q + 1} sur {st.session_state.nbquestion}")
+
+    if st.session_state.répval == False :
+        st.subheader(f"Question {st.session_state.no_q + 1} sur {st.session_state.nbquestion}")
 
     if st.session_state.qactuel is None :
         st.session_state.qactuel = choix_question()
