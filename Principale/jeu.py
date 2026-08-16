@@ -129,38 +129,40 @@ def jeu() :
 
     st.write(question)
 
-    if st.button("Voir la réponse") :
-        st.write(réponse)
+    if st.session_state.répval == False :
 
-    colonne1, colonne2, colonne3, colonne4 = st.columns(4)
+        if st.button("Voir la réponse") :
+            st.write(réponse)
 
-    with colonne1 :
-        if st.button("Je n'en sais rien"):
-            scoreq = 0
-            scoremaj(theme, question, scoreq)
-            st.rerun()
+        colonne1, colonne2, colonne3, colonne4 = st.columns(4)
 
-    with colonne2 :
-        if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr"):
-            scoreq = 1
-            scoremaj(theme, question, scoreq)
-            st.rerun()
+        with colonne1 :
+            if st.button("Je n'en sais rien"):
+                scoreq = 0
+                scoremaj(theme, question, scoreq)
+                st.rerun()
 
-    with colonne3 :
-        if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%"):
-            scoreq = 2
-            scoremaj(theme, question, scoreq)
-            st.rerun()
+        with colonne2 :
+            if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr"):
+                scoreq = 1
+                scoremaj(theme, question, scoreq)
+                st.rerun()
 
-    with colonne4 :
-        if st.button("Je connait la réponse!!!"):
-            scoreq = 3
-            scoremaj(theme, question, scoreq)
-            st.rerun()
+        with colonne3 :
+            if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%"):
+                scoreq = 2
+                scoremaj(theme, question, scoreq)
+                st.rerun()
+
+        with colonne4 :
+            if st.button("Je connait la réponse!!!"):
+                scoreq = 3
+                scoremaj(theme, question, scoreq)
+                st.rerun()
 
     if st.session_state.répval == True :
         st.warning("Voici la réponse", réponse)
-        
+
         if st.button("Question suivante"):
             st.session_state.répval = False
             st.session_state.qactuel = None
