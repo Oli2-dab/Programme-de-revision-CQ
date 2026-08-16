@@ -16,13 +16,13 @@ if st.session_state.jeulancé == False :
 def choix_des_questions() :
 
     matière_dispo = {
-        "météo" : ("La météo"),
+        "météo" : "La météo",
 #        "théorie_du_vol" : ("La théorie du vol", bqtdv),
 #        "règlementation" : ("RAC", bqrac),
 #        "navigation" : ("Nav", bqnav)
     }
 
-    for matière, (nom_matière, _) in matière_dispo.items() :
+    for matière, nom_matière in matière_dispo.items() :
         st.checkbox(nom_matière, key = matière)
 
     if st.button("Choisir ces matières") :
@@ -60,7 +60,7 @@ avertissement.write("Cette platforme est utiliser pour différent projet.")
 avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corrigées pour que les autres ne les rencontres pas.")
 
 if st.session_state.jeulancé == False :
-    st.write("Version 0.0.6")
+    st.write("Version 0.0.7")
 
     st.markdown("""
                 -**0.0.0**  
