@@ -3,9 +3,11 @@
 #   Olivier Moreau
 #
 
-from Banque_de_question.bqmétéo import categorie
+from Banque_de_question.bqmétéo import categoriemeteo
 import streamlit as st
 from jeu import jeu
+
+st.session_state.jeulancé = False
 
 st.title("Platforme de révision pour les cours de pilotage")
 if st.session_state.jeulancé == False :
@@ -29,11 +31,11 @@ def choix_des_questions() :
             st.subheader("Choisissez les thèmes de la matière météo")
 
             # Afficher les thèmes
-            for theme in categorie.keys():
+            for theme in categoriemeteo.keys():
                 st.checkbox(theme, key=f"theme_{theme}")
 
             if st.button("Choisir ces thèmes"):
-                for theme, questions in categorie.items():
+                for theme, questions in categoriemeteo.items():
                     if st.session_state.get(f"theme_{theme}", False):
                         st.session_state.bqjeu += questions
 
@@ -58,7 +60,7 @@ avertissement.write("Cette platforme est utiliser pour différent projet.")
 avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corrigées pour que les autres ne les rencontres pas.")
 
 if st.session_state.jeulancé == False :
-    st.write("Version 0.0.5")
+    st.write("Version 0.0.6")
 
     st.markdown("""
                 -**0.0.0**  
