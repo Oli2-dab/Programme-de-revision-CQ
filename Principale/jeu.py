@@ -121,7 +121,7 @@ def jeu() :
         if st.button("Retourner au choix des matières"):
             reset_jeu()
             
-    st.subheader("Question", st.session_state.no_q, "sur", st.session_state.nbquestion)
+    st.subheader(f"Question {st.session_state.no_q + 1} sur {st.session_state.nbquestion}")
 
     if st.session_state.qactuel is None :
         st.session_state.qactuel = choix_question()
@@ -166,5 +166,4 @@ def jeu() :
         if st.button("Question suivante"):
             st.session_state.répval = False
             st.session_state.qactuel = None
-            st.session_state.no_q + 1
             st.rerun()
