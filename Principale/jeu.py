@@ -76,6 +76,7 @@ def reset_jeu():
     st.session_state.qactuel = None
     st.session_state.répval = False
     st.session_state.etape = "choix_matière"
+    st.session_state.réussite = False
 
 def scoremaj(theme, question, scoreq) :
     st.session_state.scoretotal += scoreq
@@ -114,6 +115,7 @@ def choix_question() :
 
 def jeu() :
     if st.session_state.no_q == st.session_state.nbquestion :
+        st.session_state.réussite = True
         st.subheader("Votre score par thème est de :")
         for theme, score in st.session_state.scorecat.items():
             st.write(f"{theme}: {score}/{st.session_state.totalcat[theme]}")
@@ -121,7 +123,7 @@ def jeu() :
         if st.button("Retourner au choix des matières"):
             reset_jeu()
 
-    if st.session_state.répval == False :
+    if st.session_state.réussite == True :
         st.subheader(f"Question {st.session_state.no_q + 1} sur {st.session_state.nbquestion}")
 
     if st.session_state.qactuel is None :
