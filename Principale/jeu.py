@@ -77,7 +77,7 @@ def reset_jeu():
     st.session_state.répval = False
     st.session_state.etape = "choix_matière"
 
-def score(theme, question) :
+def scoremaj(theme, question) :
     st.session_state.scoretotal += st.session_state.scoreq
     
     if theme not in st.session_state.scorecat :
@@ -138,21 +138,25 @@ def jeu() :
         if st.button("Je n'en sais rien"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 0
+            scoremaj()
 
     with colonne2 :
         if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 1
+            scoremaj()
 
     with colonne3 :
         if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 2
+            scoremaj()
 
     with colonne4 :
         if st.button("Je connait la réponse!!!"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 3
+            scoremaj()
 
     if st.session_state.répval == True :
         if st.button("Question suivante"):
