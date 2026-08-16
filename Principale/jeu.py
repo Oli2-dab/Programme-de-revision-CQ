@@ -126,48 +126,48 @@ def jeu() :
     if st.session_state.réussite == False :
         st.subheader(f"Question {st.session_state.no_q + 1} sur {st.session_state.nbquestion}")
 
-    if st.session_state.qactuel is None :
-        st.session_state.qactuel = choix_question()
-    question, réponse, theme = st.session_state.qactuel
+        if st.session_state.qactuel is None :
+            st.session_state.qactuel = choix_question()
+        question, réponse, theme = st.session_state.qactuel
 
-    st.write(question)
+        st.write(question)
 
-    if st.session_state.répval == False :
+        if st.session_state.répval == False :
 
-        if st.button("Voir la réponse") :
-            st.write(réponse)
+            if st.button("Voir la réponse") :
+                st.write(réponse)
 
-        colonne1, colonne2, colonne3, colonne4 = st.columns(4)
+            colonne1, colonne2, colonne3, colonne4 = st.columns(4)
 
-        with colonne1 :
-            if st.button("Je n'en sais rien"):
-                scoreq = 0
-                scoremaj(theme, question, scoreq)
+            with colonne1 :
+                if st.button("Je n'en sais rien"):
+                    scoreq = 0
+                    scoremaj(theme, question, scoreq)
+                    st.rerun()
+
+            with colonne2 :
+                if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr"):
+                    scoreq = 1
+                    scoremaj(theme, question, scoreq)
+                    st.rerun()
+
+            with colonne3 :
+                if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%"):
+                    scoreq = 2
+                    scoremaj(theme, question, scoreq)
+                    st.rerun()
+
+            with colonne4 :
+                if st.button("Je connait la réponse!!!"):
+                    scoreq = 3
+                    scoremaj(theme, question, scoreq)
+                    st.rerun()
+
+        if st.session_state.répval == True :
+            st.warning(f"Voici la réponse : {réponse}")
+
+            if st.button("Question suivante"):
+                st.session_state.répval = False
+                st.session_state.qactuel = None
+                st.session_state.no_q += 1
                 st.rerun()
-
-        with colonne2 :
-            if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr"):
-                scoreq = 1
-                scoremaj(theme, question, scoreq)
-                st.rerun()
-
-        with colonne3 :
-            if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%"):
-                scoreq = 2
-                scoremaj(theme, question, scoreq)
-                st.rerun()
-
-        with colonne4 :
-            if st.button("Je connait la réponse!!!"):
-                scoreq = 3
-                scoremaj(theme, question, scoreq)
-                st.rerun()
-
-    if st.session_state.répval == True :
-        st.warning(f"Voici la réponse : {réponse}")
-
-        if st.button("Question suivante"):
-            st.session_state.répval = False
-            st.session_state.qactuel = None
-            st.session_state.no_q += 1
-            st.rerun()
