@@ -161,7 +161,7 @@ def jeu() :
                 st.rerun()
 
     if st.session_state.répval == True :
-        st.warning("Voici la réponse", réponse)
+        st.warning(f"Voici la réponse {réponse}")
 
         if st.button("Question suivante"):
             st.session_state.répval = False
