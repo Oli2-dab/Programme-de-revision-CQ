@@ -121,7 +121,7 @@ def jeu() :
         if st.button("Retourner au choix des matières"):
             reset_jeu()
             
-    st.subheader(f"Question {st.session_state.no_q + 1} sur {st.session_state.nbquestion}")
+    st.subheader("Question", st.session_state.no_q, "sur", st.session_state.nbquestion)
 
     if st.session_state.qactuel is None :
         st.session_state.qactuel = choix_question()
@@ -136,34 +136,33 @@ def jeu() :
 
     with colonne1 :
         if st.button("Je n'en sais rien"):
-            st.write("Voici la réponse", réponse)
             scoreq = 0
             scoremaj(theme, question, scoreq)
             st.rerun()
 
     with colonne2 :
         if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr"):
-            st.write("Voici la réponse", réponse)
             scoreq = 1
             scoremaj(theme, question, scoreq)
             st.rerun()
 
     with colonne3 :
         if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%"):
-            st.write("Voici la réponse", réponse)
             scoreq = 2
             scoremaj(theme, question, scoreq)
             st.rerun()
 
     with colonne4 :
         if st.button("Je connait la réponse!!!"):
-            st.write("Voici la réponse", réponse)
             scoreq = 3
             scoremaj(theme, question, scoreq)
             st.rerun()
 
     if st.session_state.répval == True :
+        st.warning("Voici la réponse", réponse)
+        
         if st.button("Question suivante"):
             st.session_state.répval = False
             st.session_state.qactuel = None
+            st.session_state.no_q + 1
             st.rerun()
