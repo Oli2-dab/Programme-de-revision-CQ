@@ -3,9 +3,77 @@
 #   Olivier Moreau
 #
 
-from Banque_de_question import bqmétéo, bqnav, bqrac, bqtdv
+from Banque_de_question.bqmétéo import categorie_météo
 import streamlit as st
 import random
+
+matière_dispo = {
+        "météo" : "La météo",
+#        "théorie_du_vol" : "La théorie du vol",
+#        "règlementation" : "RAC",
+#        "navigation" : "Nav",
+    }
+
+banque_de_thèmes = {
+    "météo": categorie_météo,
+#    "théorie_du_vol": categorie_TDV,
+#    "règlementation": categorie_RAC,
+#    "navigation": categorie_NAV
+}
+
+def choix_matière():
+    # Toujours repartir d'une liste vide
+    st.session_state.matière_choisie = []
+
+    # Affichage des matières
+    for matière, nom_matière in matière_dispo.items():
+        st.checkbox(nom_matière, key=matière)
+
+    # Bouton : on lit les checkboxes AVANT de changer l'étape
+    if st.button("Passer au choix des thèmes"):
+        for matière in matière_dispo.keys():
+            if st.session_state.get(matière, False):
+                st.session_state.matière_choisie.append(matière)
+
+        if not st.session_state.matière_choisie:
+            st.warning("Veuillez sélectionner des matières.")
+            return
+
+        st.session_state.etape = "choix_thèmes"
+
+def choix_thème():
+    # Toujours repartir d'une liste vide de questions
+    st.session_state.bqjeu = []
+
+    # Affichage des thèmes
+    for matière in st.session_state.matière_choisie:
+        for theme in banque_de_thèmes[matière].keys():
+            st.checkbox(theme, key=f"{matière}_{theme}")
+
+    # Bouton : on lit les checkboxes AVANT de changer l'étape
+    if st.button("Débuter"):
+        for matière in st.session_state.matière_choisie:
+            for theme, questions in banque_de_thèmes[matière].items():
+                if st.session_state.get(f"{matière}_{theme}", False):
+                    st.session_state.bqjeu += questions
+
+        if not st.session_state.bqjeu:
+            st.warning("Veuillez sélectionner des thèmes.")
+            return
+
+        st.session_state.nbquestion = len(st.session_state.bqjeu)
+        st.session_state.etape = "jeu"
+
+
+
+def reset_jeu():
+    st.session_state.bqjeu = []
+    st.session_state.scoretotal = 0
+    st.session_state.no_q = 0
+    st.session_state.nbquestion = 0
+    st.session_state.qactuel = None
+    st.session_state.répval = False
+    st.session_state.etape = "choix_matière"
 
 def score(theme, question) :
     st.session_state.scoretotal += st.session_state.scoreq
@@ -49,9 +117,8 @@ def jeu() :
             st.write(f"{theme}: {score}/{st.session_state.totalcat[theme]}")
         st.success(f"Bravo! Votre score est de {st.session_state.scoretotal} sur {st.session_state.no_q * 3}.")
         if st.button("Retourner au choix des matières"):
-            st.session_state.jeulancé == False
-            st.rerun()
-
+            reset_jeu()
+            
     st.subheader(f"Question {st.session_state.no_q + 1} sur {st.session_state.nbquestion}")
 
     if st.session_state.qactuel is None :
@@ -93,5 +160,3 @@ def jeu() :
         if st.button("Question suivante"):
             st.session_state.répval = False
             st.session_state.qactuel = None
-            st.rerun()
-

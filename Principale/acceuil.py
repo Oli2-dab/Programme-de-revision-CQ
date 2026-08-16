@@ -3,55 +3,39 @@
 #   Olivier Moreau
 #
 
-from Banque_de_question.bqmétéo import categoriemeteo
+from Banque_de_question.bqmétéo import categorie_météo
 import streamlit as st
-from jeu import jeu
+from jeu import jeu, choix_matière, choix_thème
 
-st.session_state.jeulancé = False
+initialization = {
+    "matière_choisie":[],
+    "bqjeu":[],
+    "etape":"choix_matière",
+    "scorecat":{},
+    "scoretotal":0,
+    "totalcat":{},
+    "qdscore":{},
+    "qactuel":None,
+    "no_q" : 0,
+    "nbquestion":0,
+    "répval":False
+}
+
+for nom, valeur in initialization.items() :
+    if nom not in st.session_state :
+        st.session_state[nom] = valeur
 
 st.title("Platforme de révision pour les cours de pilotage")
-if st.session_state.jeulancé == False :
+if st.session_state.etape == "choix_matière" :
     st.header("Choisiez la matière à réviser.")
 
-def choix_des_questions() :
+if st.session_state.etape == "choix_matière" :
+    choix_matière()
 
-    matière_dispo = {
-        "météo" : "La météo",
-#        "théorie_du_vol" : ("La théorie du vol", bqtdv),
-#        "règlementation" : ("RAC", bqrac),
-#        "navigation" : ("Nav", bqnav)
-    }
+if st.session_state.etape == "choix_thèmes" :
+    choix_thème()
 
-    for matière, nom_matière in matière_dispo.items() :
-        st.checkbox(nom_matière, key = matière)
-
-    if st.button("Choisir ces matières") :
-
-        if st.session_state.get("météo", False):
-            st.subheader("Choisissez les thèmes de la matière météo")
-
-            # Afficher les thèmes
-            for theme in categoriemeteo.keys():
-                st.checkbox(theme, key=f"theme_{theme}")
-
-            if st.button("Choisir ces thèmes"):
-                for theme, questions in categoriemeteo.items():
-                    if st.session_state.get(f"theme_{theme}", False):
-                        st.session_state.bqjeu += questions
-
-                if not st.session_state.bqjeu:
-                    st.warning("Veuillez sélectionner au moins un thème")
-                    return
-
-                st.session_state.no_q = 0
-                st.session_state.nbquestion = len(st.session_state.bqjeu)
-                st.session_state.jeulancé = True
-                st.rerun()
-
-if st.session_state.jeulancé == False :
-    choix_des_questions()
-
-if st.session_state.jeulancé == True :
+if st.session_state.etape == "jeu" :
     jeu()
 
 avertissement = st.container(border = True)
@@ -59,8 +43,8 @@ avertissement.header("AVERTISSEMENT")
 avertissement.write("Cette platforme est utiliser pour différent projet.")
 avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corrigées pour que les autres ne les rencontres pas.")
 
-if st.session_state.jeulancé == False :
-    st.write("Version 0.0.7")
+if st.session_state.etape == "choix_matière" :
+    st.write("Version 0.0.8")
 
     st.markdown("""
                 -**0.0.0**  

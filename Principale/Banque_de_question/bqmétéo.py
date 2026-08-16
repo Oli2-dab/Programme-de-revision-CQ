@@ -1148,7 +1148,7 @@ cb = [
 
 # {"theme" : "", "question" : "?", "réponse" : "", "indice" : ""},
 
-categoriemeteo = {
+categorie_météo = {
     "humidite" : bqhumidité,
     "rechauffement" : bqréchauffement,
     "refroidissement" : bqrefroidissement,
