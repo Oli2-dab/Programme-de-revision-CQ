@@ -138,28 +138,24 @@ def jeu() :
         if st.button("Je n'en sais rien"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 0
-            score(theme, question)
             st.rerun()
 
     with colonne2 :
         if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 1
-            score(theme, question)
             st.rerun()
 
     with colonne3 :
         if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 2
-            score(theme, question)
             st.rerun()
 
     with colonne4 :
         if st.button("Je connait la réponse!!!"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 3
-            score(theme, question)
             st.rerun()
 
     if st.session_state.répval == True :
