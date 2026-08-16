@@ -40,6 +40,7 @@ def choix_matière():
             return
 
         st.session_state.etape = "choix_thèmes"
+        st.rerun()
 
 def choix_thème():
     # Toujours repartir d'une liste vide de questions
@@ -63,6 +64,7 @@ def choix_thème():
 
         st.session_state.nbquestion = len(st.session_state.bqjeu)
         st.session_state.etape = "jeu"
+        st.rerun()
 
 
 
@@ -137,26 +139,31 @@ def jeu() :
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 0
             score(theme, question)
+            st.rerun()
 
     with colonne2 :
         if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 1
             score(theme, question)
+            st.rerun()
 
     with colonne3 :
         if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 2
             score(theme, question)
+            st.rerun()
 
     with colonne4 :
         if st.button("Je connait la réponse!!!"):
             st.write("Voici la réponse", réponse)
             st.session_state.scoreq = 3
             score(theme, question)
+            st.rerun()
 
     if st.session_state.répval == True :
         if st.button("Question suivante"):
             st.session_state.répval = False
             st.session_state.qactuel = None
+            st.rerun()
