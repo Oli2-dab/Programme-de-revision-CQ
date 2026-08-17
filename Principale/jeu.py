@@ -15,7 +15,7 @@ matière_dispo = {
     }
 
 banque_de_thèmes = {
-    "météo": categorie_météo,
+    "météo": (categorie_météo, "nom"),
 #    "théorie_du_vol": categorie_TDV,
 #    "règlementation": categorie_RAC,
 #    "navigation": categorie_NAV
@@ -49,7 +49,7 @@ def choix_thème():
     # Affichage des thèmes
     for matière in st.session_state.matière_choisie:
         for theme in banque_de_thèmes[matière].keys():
-            st.checkbox(theme, key=f"{matière}_{theme}")
+            st.checkbox(theme, key=f"nom")
 
     # Bouton : on lit les checkboxes AVANT de changer l'étape
     if st.button("Débuter"):
