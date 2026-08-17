@@ -54,7 +54,7 @@ def choix_thème():
     # Bouton : on lit les checkboxes AVANT de changer l'étape
     if st.button("Débuter"):
         for matière in st.session_state.matière_choisie:
-            for theme, questions in banque_de_thèmes[matière].items():
+            for theme, (questions, nom_affiché) in banque_de_thèmes[matière].items():
                 if st.session_state.get(f"{matière}_{theme}", False):
                     st.session_state.bqjeu += questions
 
