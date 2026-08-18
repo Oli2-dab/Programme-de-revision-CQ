@@ -45,11 +45,13 @@ avertissement.write("Cette platforme est utiliser pour différent projet.")
 avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corrigées pour que les autres ne les rencontres pas.")
 
 if st.session_state.etape == "choix_matière" :
-    st.write("Version 1.0.29")
+    st.write("Version 1.1.29")
 
     st.markdown("""
+    -**1.1.29**  
+    Mis à jour de la banque de question météo pour la convertir du format de l'ancien site à celui-ci.  
     -**1.0.28**  
-    Lancement du site version publique avec la banque de question de météo
+    Lancement du site version publique avec la banque de question de météo.  
     -**0.0.0**  
-    Création du site
+    Création du site.
     """)
