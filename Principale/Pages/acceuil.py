@@ -36,14 +36,14 @@ avertissement.write("Cette platforme est utiliser pour différent projet.")
 avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corriger et que les autres ne les rencontres pas.")
 
 if st.button("Pour réviser la matière des différents cours") :
-    st.switch_page("activité/jeu.py")
+    st.switch_page("Pages/jeu.py")
 
 if st.button("Pour pratiquer les maths sans calculatrice") :
-    st.switch_page("activité/math.py")
+    st.switch_page("Pages/math.py")
 
 #Version
 
-st.write("Version 1.1.32")
+st.write("Version 1.1.33")
 
 st.markdown("""
 -**1.1.29**  

@@ -127,7 +127,7 @@ def jeu() :
 
         if st.button("Retourner à l'accueil") :
             reset_jeu()
-            st.st.switch_page("accueil.py")
+            st.st.switch_page("Pages/accueil.py")
 
     if st.session_state.réussite == False :
         st.subheader(f"Question {st.session_state.no_q + 1} sur {st.session_state.nbquestion}")
