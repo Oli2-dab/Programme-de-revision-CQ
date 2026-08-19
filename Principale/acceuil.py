@@ -3,11 +3,11 @@
 #   Olivier Moreau
 #
 
-from Banque_de_question.bqmétéo import categorie_météo
 import streamlit as st
-from jeu import jeu, choix_matière, choix_thème
 
-initialization = {
+#Initialisation
+
+initialisation = {
     "matière_choisie":[],
     "bqjeu":[],
     "etape":"choix_matière",
@@ -22,36 +22,34 @@ initialization = {
     "réussite":False
 }
 
-for nom, valeur in initialization.items() :
+for nom, valeur in initialisation.items() :
     if nom not in st.session_state :
         st.session_state[nom] = valeur
 
+#Page
+
 st.title("Platforme de révision pour les cours de pilotage")
-if st.session_state.etape == "choix_matière" :
-    st.header("Choisiez la matière à réviser.")
-
-if st.session_state.etape == "choix_matière" :
-    choix_matière()
-
-if st.session_state.etape == "choix_thèmes" :
-    choix_thème()
-
-if st.session_state.etape == "jeu" :
-    jeu()
 
 avertissement = st.container(border = True)
 avertissement.header("AVERTISSEMENT")
 avertissement.write("Cette platforme est utiliser pour différent projet.")
-avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corrigées pour que les autres ne les rencontres pas.")
+avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corriger et que les autres ne les rencontres pas.")
 
-if st.session_state.etape == "choix_matière" :
-    st.write("Version 1.1.29")
+if st.button("Pour réviser la matière des différents cours") :
+    st.switch_page("activité/jeu.py")
 
-    st.markdown("""
-    -**1.1.29**  
-    Mis à jour de la banque de question météo pour la convertir du format de l'ancien site à celui-ci.  
-    -**1.0.28**  
-    Lancement du site version publique avec la banque de question de météo.  
-    -**0.0.0**  
-    Création du site.
-    """)
+if st.button("Pour pratiquer les maths sans calculatrice") :
+    st.switch_page("activité/math.py")
+
+#Version
+
+st.write("Version 1.1.32")
+
+st.markdown("""
+-**1.1.29**  
+Mis à jour de la banque de question météo pour la convertir du format de l'ancien site à celui-ci.  
+-**1.0.28**  
+Lancement du site version publique avec la banque de question de météo.  
+-**0.0.0**  
+Création du site.
+""")
