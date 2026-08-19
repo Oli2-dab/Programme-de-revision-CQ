@@ -66,8 +66,6 @@ def choix_thème():
         st.session_state.etape = "jeu"
         st.rerun()
 
-
-
 def reset_jeu():
     st.session_state.bqjeu = []
     st.session_state.scoretotal = 0
@@ -117,12 +115,19 @@ def jeu() :
     if st.session_state.no_q == st.session_state.nbquestion :
         st.session_state.réussite = True
         st.subheader("Votre score par thème est de :")
+        
         for theme, score in st.session_state.scorecat.items():
             st.write(f"{theme}: {score}/{st.session_state.totalcat[theme]}")
+
         st.success(f"Bravo! Votre score est de {st.session_state.scoretotal} sur {st.session_state.no_q * 3}.")
+
         if st.button("Retourner au choix des matières"):
             reset_jeu()
             st.rerun()
+
+        if st.button("Retourner à l'accueil") :
+            reset_jeu()
+            st.st.switch_page("accueil.py")
 
     if st.session_state.réussite == False :
         st.subheader(f"Question {st.session_state.no_q + 1} sur {st.session_state.nbquestion}")
@@ -172,3 +177,17 @@ def jeu() :
                 st.session_state.qactuel = None
                 st.session_state.no_q += 1
                 st.rerun()
+
+#Choix de question
+
+if st.session_state.etape == "choix_matière" :
+    st.header("Choisiez la matière à réviser.")
+
+if st.session_state.etape == "choix_matière" :
+    choix_matière()
+
+if st.session_state.etape == "choix_thèmes" :
+    choix_thème()
+
+if st.session_state.etape == "jeu" :
+    jeu()
