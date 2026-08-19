@@ -26,12 +26,6 @@ for nom, valeur in initialisation.items() :
     if nom not in st.session_state :
         st.session_state[nom] = valeur
 
-navigation = st.navigation([
-    st.Page("accueil.py", title = "Page d'accueil"),
-    st.Page("activité/jeu.py", title = "Pour réviser la matière des différents cours"),
-    st.Page("activité/math.py", title = "Pour pratiquer les maths sans calculatrice"),
-])
-
 #Page
 
 st.title("Platforme de révision pour les cours de pilotage")
@@ -49,7 +43,7 @@ if st.button("Pour pratiquer les maths sans calculatrice") :
 
 #Version
 
-st.write("Version 1.1.31")
+st.write("Version 1.1.32")
 
 st.markdown("""
 -**1.1.29**  
