@@ -50,7 +50,7 @@ if st.button("Pour pratiquer le calcul mental") :
 
 #Version
 
-st.write("Version 1.1.39")
+st.write("Version 1.1.40")
 
 st.markdown("""
 -**1.1.29**  
