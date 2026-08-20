@@ -43,7 +43,7 @@ if st.button("Pour pratiquer les maths sans calculatrice") :
 
 #Version
 
-st.write("Version 1.1.35")
+st.write("Version 1.1.36")
 
 st.markdown("""
 -**1.1.29**  
