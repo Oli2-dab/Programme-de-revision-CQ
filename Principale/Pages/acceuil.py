@@ -5,6 +5,10 @@
 
 import streamlit as st
 
+#Page
+
+st.title("Platforme de révision pour les cours de pilotage")
+
 #Initialisation
 
 initialisation = {
@@ -26,10 +30,6 @@ for nom, valeur in initialisation.items() :
     if nom not in st.session_state :
         st.session_state[nom] = valeur
 
-#Page
-
-st.title("Platforme de révision pour les cours de pilotage")
-
 avertissement = st.container(border = True)
 avertissement.header("AVERTISSEMENT")
 avertissement.write("Cette platforme est utiliser pour différent projet.")
@@ -43,7 +43,7 @@ if st.button("Pour pratiquer les maths sans calculatrice") :
 
 #Version
 
-st.write("Version 1.1.33")
+st.write("Version 1.1.34")
 
 st.markdown("""
 -**1.1.29**  
