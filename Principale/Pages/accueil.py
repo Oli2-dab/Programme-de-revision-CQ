@@ -29,7 +29,8 @@ initialisation = {
     "noqmath":0,
     "score_math":0,
     "opération":"",
-    "rép_envoyé":False
+    "rép_envoyé":False,
+    "choix_math":False
 }
 
 for nom, valeur in initialisation.items() :
@@ -49,7 +50,7 @@ if st.button("Pour pratiquer le calcul mental") :
 
 #Version
 
-st.write("Version 1.1.38")
+st.write("Version 1.1.39")
 
 st.markdown("""
 -**1.1.29**  
