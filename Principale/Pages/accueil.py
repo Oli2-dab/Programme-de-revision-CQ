@@ -38,12 +38,12 @@ avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je pu
 if st.button("Pour réviser la matière des différents cours") :
     st.switch_page("Pages/jeu.py")
 
-if st.button("Pour pratiquer les maths sans calculatrice") :
+if st.button("Pour pratiquer le calcul mental") :
     st.switch_page("Pages/math.py")
 
 #Version
 
-st.write("Version 1.1.36")
+st.write("Version 1.1.37")
 
 st.markdown("""
 -**1.1.29**  
