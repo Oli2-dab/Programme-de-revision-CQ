@@ -59,7 +59,8 @@ def jeu_math() :
 
     if st.session_state.rép_envoyé == False :
 
-        while st.session_state.noqmath <= st.session_state.nbmath :
+        if st.session_state.victoire == False :
+
             st.session_state.opération = random.choice(st.session_state.choix_opérateur)
 
             nb1, nb2 = choix_nombre()
@@ -92,18 +93,26 @@ def jeu_math() :
 
             if st.button("Soumettre la réponse") :
                 st.session_state.rép_envoyé = True
+
+                if st.session_state.noqmath == st.session_state.nbmath :
+                    st.session_state.victoire == True
+
                 st.rerun()
 
-        st.success("Bravo! Votre score est de", st.session_state.score_math, "sur", st.session_state.nbmath)
+        if st.session_state.victoire == True :
 
-        if st.button("Recommencer") :
-            reset_jeu()
-            st.session_state.choix_math = False
+            st.success("Bravo! Votre score est de", st.session_state.score_math, "sur", st.session_state.nbmath)
 
-        if st.button("Retourner à l'accueil") :
-            reset_jeu()
-            st.session_state.choix_math = False
-            st.switch_page("Pages/accueil.py")
+            if st.button("Recommencer") :
+                reset_jeu()
+                st.session_state.choix_math = False
+                st.session_state.victoire == False
+
+            if st.button("Retourner à l'accueil") :
+                reset_jeu()
+                st.session_state.choix_math = False
+                st.session_state.victoire == False
+                st.switch_page("Pages/accueil.py")
 
     elif st.session_state.rép_envoyé == True :
         validation_réponse(réponse_joueur, réponse_jeu)
