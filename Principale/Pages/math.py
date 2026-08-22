@@ -20,15 +20,20 @@ def choix() :
 
     st.session_state.choix_opérateur = []
 
-    st.checkbox("Addition", key="add")
-    st.checkbox("Soustraction", key="sou")
-    st.checkbox("Multiplication", key="mul")
-    st.checkbox("Division", key="div")
+    opérateur_dispo = {
+        "Addition": "add",
+        "Soustraction": "sou",
+        "Multiplication": "mul",
+        "Division": "div"
+    }
+
+    for nom, key in opérateur_dispo.items():
+        st.checkbox(nom, key = key)
 
     st.session_state.nbmath = st.number_input("Combien de question coulez vous", step=1)
 
     if st.button("Débuter") :
-        for opérateur in choix() :
+        for opérateur in ["add", "sou", "mul", "div"] :
             if st.session_state.get(opérateur, False):
                 st.session_state.choix_opérateur.append(opérateur)
 
