@@ -12,30 +12,38 @@ st.title("Platforme de révision pour les cours de pilotage")
 #Initialisation
 
 initialisation = {
-    "matière_choisie":[],
-    "bqjeu":[],
-    "etape":"choix_matière",
-    "scorecat":{},
-    "scoretotal":0,
-    "totalcat":{},
-    "qdscore":{},
-    "qactuel":None,
-    "no_q" : 0,
-    "nbquestion":0,
-    "répval":False,
-    "réussite":False,
-    "choix_opérateur":[],
-    "nbmath":0,
-    "noqmath":0,
-    "score_math":0,
-    "opération":"",
-    "rép_envoyé":False,
-    "choix_math":False,
-    "victoire":False
+    "matière_choisie": [],
+    "bqjeu": [],
+    "etape": "choix_matière",
+    "scorecat": {},
+    "scoretotal": 0,
+    "totalcat": {},
+    "qdscore": {},
+    "qactuel": None,
+    "no_q": 0,
+    "nbquestion": 0,
+    "répval": False,
+    "réussite": False,
+
+    # Variables du jeu de maths
+    "choix_opérateur": [],
+    "nbmath": 0,
+    "noqmath": 0,
+    "score_math": 0,
+    "opération": "",
+    "rép_envoyé": False,
+    "choix_math": False,
+    "victoire": False,
+
+    # Variables pour la question en cours
+    "nb1": None,
+    "nb2": None,
+    "réponse_jeu": None,
+    "op_symbole": None
 }
 
-for nom, valeur in initialisation.items() :
-    if nom not in st.session_state :
+for nom, valeur in initialisation.items():
+    if nom not in st.session_state:
         st.session_state[nom] = valeur
 
 avertissement = st.container(border = True)
@@ -51,7 +59,7 @@ if st.button("Pour pratiquer le calcul mental") :
 
 #Version
 
-st.write("Version 1.1.45")
+st.write("Version 1.1.46")
 
 st.markdown("""
 -**1.1.29**  
