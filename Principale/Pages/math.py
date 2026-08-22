@@ -37,6 +37,9 @@ def choix() :
             if st.session_state.get(opérateur, False):
                 st.session_state.choix_opérateur.append(opérateur)
 
+        st.session_state.choix_math = True
+        st.rerun()
+
 #Jeu
 
 def choix_nombre() :
