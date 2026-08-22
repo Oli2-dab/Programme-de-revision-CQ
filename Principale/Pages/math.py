@@ -95,7 +95,7 @@ def jeu_math() :
                 st.session_state.rép_envoyé = True
 
                 if st.session_state.noqmath == st.session_state.nbmath :
-                    st.session_state.victoire == True
+                    st.session_state.victoire = True
 
                 st.rerun()
 
@@ -106,12 +106,12 @@ def jeu_math() :
             if st.button("Recommencer") :
                 reset_jeu()
                 st.session_state.choix_math = False
-                st.session_state.victoire == False
+                st.session_state.victoire = False
 
             if st.button("Retourner à l'accueil") :
                 reset_jeu()
                 st.session_state.choix_math = False
-                st.session_state.victoire == False
+                st.session_state.victoire = False
                 st.switch_page("Pages/accueil.py")
 
     elif st.session_state.rép_envoyé == True :
