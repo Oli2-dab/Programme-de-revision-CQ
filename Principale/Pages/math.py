@@ -85,7 +85,7 @@ def jeu_math() :
                     nb1, nb2 = choix_nombre()
                     réponse_jeu = nb1 / nb2
 
-            st.subheader("Question", st.session_state.noqmath, "sur", st.session_state.nbmath)
+            st.subheader(f"Question {st.session_state.noqmath} sur {st.session_state.nbmath}")
             st.write(nb1, st.session_state.opération, nb2)
 
             réponse_joueur = st.number_input("Votre réponse")
