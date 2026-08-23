@@ -5,6 +5,10 @@
 
 import streamlit as st
 
+#Page
+
+st.title("Platforme de révision pour les cours de pilotage")
+
 #Initialisation
 
 initialisation = {
@@ -16,19 +20,31 @@ initialisation = {
     "totalcat":{},
     "qdscore":{},
     "qactuel":None,
-    "no_q" : 0,
+    "no_q":0,
     "nbquestion":0,
     "répval":False,
-    "réussite":False
+    "réussite":False,
+
+    # Variables du jeu de maths
+    "choix_opérateur":[],
+    "nbmath":0,
+    "noqmath":0,
+    "score_math":0,
+    "opération":"",
+    "rép_envoyé":False,
+    "choix_math":False,
+    "victoire":False,
+
+    # Variables pour la question en cours
+    "nb1":None,
+    "nb2":None,
+    "réponse_jeu":None,
+    "op_symbole":None
 }
 
-for nom, valeur in initialisation.items() :
-    if nom not in st.session_state :
+for nom, valeur in initialisation.items():
+    if nom not in st.session_state:
         st.session_state[nom] = valeur
-
-#Page
-
-st.title("Platforme de révision pour les cours de pilotage")
 
 avertissement = st.container(border = True)
 avertissement.header("AVERTISSEMENT")
@@ -36,16 +52,18 @@ avertissement.write("Cette platforme est utiliser pour différent projet.")
 avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corriger et que les autres ne les rencontres pas.")
 
 if st.button("Pour réviser la matière des différents cours") :
-    st.switch_page("activité/jeu.py")
+    st.switch_page("Pages/jeu.py")
 
-if st.button("Pour pratiquer les maths sans calculatrice") :
-    st.switch_page("activité/math.py")
+if st.button("Pour pratiquer le calcul mental") :
+    st.switch_page("Pages/math.py")
 
 #Version
 
-st.write("Version 1.1.32")
+st.write("Version 2.1.53")
 
 st.markdown("""
+-**2.1.53**  
+Ajout de la fonctionnalité pour pratiquer le calcul mental.  
 -**1.1.29**  
 Mis à jour de la banque de question météo pour la convertir du format de l'ancien site à celui-ci.  
 -**1.0.28**  
