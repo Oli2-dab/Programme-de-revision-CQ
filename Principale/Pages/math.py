@@ -8,6 +8,13 @@ import random
 
 # Reset du jeu
 
+def cliqué() :
+    if st.session_state.rép_envoyé == False :
+        st.session_state.cliqué = False
+
+    if st.session_state.rép_envoyé == True :
+        st.session_state.cliqué = True
+
 def reset_jeu():
     st.session_state.choix_opérateur = []
     st.session_state.nbmath = 0
@@ -111,7 +118,7 @@ def jeu_math():
     elif st.session_state.victoire is False :
 
         # Générer une question seulement si aucune n'est en cours
-        if st.session_state.rép_envoyé is False and st.session_state.nb1 is None:
+        if st.session_state.rép_envoyé is False:
             générer_question()
 
         st.subheader(f"Question {st.session_state.noqmath} sur {st.session_state.nbmath}")
@@ -119,7 +126,7 @@ def jeu_math():
 
         réponse_joueur = st.number_input("Votre réponse", key="réponse_joueur", step = 1)
 
-        if st.button("Soumettre la réponse"):
+        if st.button("Soumettre la réponse", on_click = cliqué, disabled = st.session_state.cliqué):
 
             st.session_state.rép_envoyé = True
 
@@ -137,6 +144,7 @@ def jeu_math():
                 st.session_state.nb2 = None
                 st.session_state.op_symbole = None
                 st.session_state.réponse_jeu = None
+                st.session_state.rép_envoyé = False
                 st.session_state.rép_envoyé = False
                 st.rerun()
 
