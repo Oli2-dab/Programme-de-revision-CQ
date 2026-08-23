@@ -41,9 +41,7 @@ def choix():
         if st.checkbox(nom, key=key):
             st.session_state.choix_opérateur.append(key)
 
-    st.session_state.nbmath = st.number_input(
-        "Combien de questions voulez-vous ?", step=1, min_value=1
-    )
+    st.session_state.nbmath = st.number_input("Combien de questions voulez-vous ?", step=1, min_value=1)
 
     if st.button("Débuter"):
         if len(st.session_state.choix_opérateur) == 0:
@@ -110,39 +108,37 @@ def jeu_math():
             st.session_state.choix_math = False
             st.switch_page("Pages/accueil.py")
 
-    # Générer une question seulement si aucune n'est en cours
-    if st.session_state.rép_envoyé is False and st.session_state.nb1 is None:
-        générer_question()
+    elif st.session_state.victoire is False :
 
-    st.subheader(f"Question {st.session_state.noqmath} sur {st.session_state.nbmath}")
-    st.write(f"{st.session_state.nb1} {st.session_state.op_symbole} {st.session_state.nb2}")
+        # Générer une question seulement si aucune n'est en cours
+        if st.session_state.rép_envoyé is False and st.session_state.nb1 is None:
+            générer_question()
 
-    réponse_joueur = st.number_input("Votre réponse", key="réponse_joueur")
+        st.subheader(f"Question {st.session_state.noqmath} sur {st.session_state.nbmath}")
+        st.write(f"{st.session_state.nb1} {st.session_state.op_symbole} {st.session_state.nb2}")
 
-    if st.button("Soumettre la réponse"):
+        réponse_joueur = st.number_input("Votre réponse", key="réponse_joueur", step = 1)
 
-        st.session_state.rép_envoyé = True
+        if st.button("Soumettre la réponse"):
 
-        if réponse_joueur == st.session_state.réponse_jeu:
-            st.success("Bravo, bonne réponse!")
-            st.session_state.score_math += 1
-        else:
-            st.warning(f"Mauvaise réponse. La bonne réponse était : {st.session_state.réponse_jeu}")
+            st.session_state.rép_envoyé = True
 
-        if st.session_state.noqmath == st.session_state.nbmath:
-            st.session_state.victoire = True
+            if réponse_joueur == st.session_state.réponse_jeu:
+                st.success("Bravo, bonne réponse!")
+                st.session_state.score_math += 1
+            else:
+                st.warning(f"Mauvaise réponse. La bonne réponse était : {st.session_state.réponse_jeu}")
 
-        st.rerun()
+            if st.session_state.noqmath == st.session_state.nbmath:
+                st.session_state.victoire = True
 
-    if st.session_state.rép_envoyé:
-
-        if st.button("Question suivante"):
-            st.session_state.nb1 = None
-            st.session_state.nb2 = None
-            st.session_state.op_symbole = None
-            st.session_state.réponse_jeu = None
-            st.session_state.rép_envoyé = False
-            st.rerun()
+            if st.button("Question suivante"):
+                st.session_state.nb1 = None
+                st.session_state.nb2 = None
+                st.session_state.op_symbole = None
+                st.session_state.réponse_jeu = None
+                st.session_state.rép_envoyé = False
+                st.rerun()
 
 # ROUTAGE
 
