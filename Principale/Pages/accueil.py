@@ -59,9 +59,11 @@ if st.button("Pour pratiquer le calcul mental") :
 
 #Version
 
-st.write("Version 1.1.53")
+st.write("Version 2.1.53")
 
 st.markdown("""
+-**2.1.53**  
+Ajout de la fonctionnalité pour pratiquer le calcul mental.  
 -**1.1.29**  
 Mis à jour de la banque de question météo pour la convertir du format de l'ancien site à celui-ci.  
 -**1.0.28**  
