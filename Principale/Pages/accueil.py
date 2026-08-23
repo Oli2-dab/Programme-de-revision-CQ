@@ -34,7 +34,6 @@ initialisation = {
     "rép_envoyé":False,
     "choix_math":False,
     "victoire":False,
-    "cliqué":False,
 
     # Variables pour la question en cours
     "nb1":None,
@@ -60,7 +59,7 @@ if st.button("Pour pratiquer le calcul mental") :
 
 #Version
 
-st.write("Version 1.1.50")
+st.write("Version 1.1.51")
 
 st.markdown("""
 -**1.1.29**  
