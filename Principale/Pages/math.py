@@ -128,6 +128,14 @@ def jeu_math():
 
         if st.session_state.rép_envoyé is True :
 
+            if st.button("Question suivante"):
+                st.session_state.nb1 = None
+                st.session_state.nb2 = None
+                st.session_state.op_symbole = None
+                st.session_state.réponse_jeu = None
+                st.session_state.rép_envoyé = False
+                st.rerun()
+
             if réponse_joueur == st.session_state.réponse_jeu:
                 st.success("Bravo, bonne réponse!")
                 st.session_state.score_math += 1
@@ -136,14 +144,6 @@ def jeu_math():
 
             if st.session_state.noqmath == st.session_state.nbmath:
                 st.session_state.victoire = True
-
-            if st.button("Question suivante"):
-                st.session_state.nb1 = None
-                st.session_state.nb2 = None
-                st.session_state.op_symbole = None
-                st.session_state.réponse_jeu = None
-                st.session_state.rép_envoyé = False
-                st.rerun()
 
 # ROUTAGE
 
