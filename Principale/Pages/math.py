@@ -97,6 +97,19 @@ def générer_question():
 
 def jeu_math():
 
+    if st.session_state.victoire:
+        st.success(f"Partie terminée! Score : {st.session_state.score_math} / {st.session_state.nbmath}")
+
+        if st.button("Recommencer"):
+            reset_jeu()
+            st.session_state.choix_math = False
+            st.rerun()
+
+        if st.button("Retourner à l'accueil"):
+            reset_jeu()
+            st.session_state.choix_math = False
+            st.switch_page("Pages/accueil.py")
+
     # Générer une question seulement si aucune n'est en cours
     if st.session_state.rép_envoyé is False and st.session_state.nb1 is None:
         générer_question()
@@ -111,7 +124,7 @@ def jeu_math():
         st.session_state.rép_envoyé = True
 
         if réponse_joueur == st.session_state.réponse_jeu:
-            st.success("Bravo, bonne réponse !")
+            st.success("Bravo, bonne réponse!")
             st.session_state.score_math += 1
         else:
             st.warning(f"Mauvaise réponse. La bonne réponse était : {st.session_state.réponse_jeu}")
@@ -123,27 +136,13 @@ def jeu_math():
 
     if st.session_state.rép_envoyé:
 
-        if st.session_state.victoire:
-            st.success(f"Partie terminée ! Score : {st.session_state.score_math} / {st.session_state.nbmath}")
-
-            if st.button("Recommencer"):
-                reset_jeu()
-                st.session_state.choix_math = False
-                st.rerun()
-
-            if st.button("Retourner à l'accueil"):
-                reset_jeu()
-                st.session_state.choix_math = False
-                st.switch_page("Pages/accueil.py")
-
-        else:
-            if st.button("Question suivante"):
-                st.session_state.nb1 = None
-                st.session_state.nb2 = None
-                st.session_state.op_symbole = None
-                st.session_state.réponse_jeu = None
-                st.session_state.rép_envoyé = False
-                st.rerun()
+        if st.button("Question suivante"):
+            st.session_state.nb1 = None
+            st.session_state.nb2 = None
+            st.session_state.op_symbole = None
+            st.session_state.réponse_jeu = None
+            st.session_state.rép_envoyé = False
+            st.rerun()
 
 # ROUTAGE
 
