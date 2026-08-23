@@ -111,7 +111,7 @@ def jeu_math():
     elif st.session_state.victoire is False :
 
         # Générer une question seulement si aucune n'est en cours
-        if st.session_state.rép_envoyé is False:
+        if st.session_state.rép_envoyé is False and st.session_state.nb1 is None :
             générer_question()
 
         st.subheader(f"Question {st.session_state.noqmath} sur {st.session_state.nbmath}")
