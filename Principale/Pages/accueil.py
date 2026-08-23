@@ -12,34 +12,35 @@ st.title("Platforme de révision pour les cours de pilotage")
 #Initialisation
 
 initialisation = {
-    "matière_choisie": [],
-    "bqjeu": [],
-    "etape": "choix_matière",
-    "scorecat": {},
-    "scoretotal": 0,
-    "totalcat": {},
-    "qdscore": {},
-    "qactuel": None,
-    "no_q": 0,
-    "nbquestion": 0,
-    "répval": False,
-    "réussite": False,
+    "matière_choisie":[],
+    "bqjeu":[],
+    "etape":"choix_matière",
+    "scorecat":{},
+    "scoretotal":0,
+    "totalcat":{},
+    "qdscore":{},
+    "qactuel":None,
+    "no_q":0,
+    "nbquestion":0,
+    "répval":False,
+    "réussite":False,
 
     # Variables du jeu de maths
-    "choix_opérateur": [],
-    "nbmath": 0,
-    "noqmath": 0,
-    "score_math": 0,
-    "opération": "",
-    "rép_envoyé": False,
-    "choix_math": False,
-    "victoire": False,
+    "choix_opérateur":[],
+    "nbmath":0,
+    "noqmath":0,
+    "score_math":0,
+    "opération":"",
+    "rép_envoyé":False,
+    "choix_math":False,
+    "victoire":False,
+    "cliqué":False,
 
     # Variables pour la question en cours
-    "nb1": None,
-    "nb2": None,
-    "réponse_jeu": None,
-    "op_symbole": None
+    "nb1":None,
+    "nb2":None,
+    "réponse_jeu":None,
+    "op_symbole":None
 }
 
 for nom, valeur in initialisation.items():
@@ -59,7 +60,7 @@ if st.button("Pour pratiquer le calcul mental") :
 
 #Version
 
-st.write("Version 1.1.49")
+st.write("Version 1.1.50")
 
 st.markdown("""
 -**1.1.29**  
