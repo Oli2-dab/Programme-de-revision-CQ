@@ -59,10 +59,10 @@ if st.button("Pour pratiquer le calcul mental") :
 
 #Version
 
-st.write("Version 2.2.53")
+st.write("Version 2.2.54")
 
 st.markdown("""
--**2.2.53**  
+-**2.2.54**  
 Ajout de la banque de question pour le cours d'instrumentation.  
 -**2.1.53**  
 Ajout de la fonctionnalité pour pratiquer le calcul mental.  
