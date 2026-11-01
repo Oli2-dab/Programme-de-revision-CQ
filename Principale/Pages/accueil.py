@@ -59,10 +59,10 @@ if st.button("Pour pratiquer le calcul mental") :
 
 #Version
 
-st.write("Version 2.3.58")
+st.write("Version 2.3.59")
 
 st.markdown("""
--**2.3.58**  
+-**2.3.59**  
 Correction d'erreurs d'affichage.  
 -**2.3.55**  
 Ajout de toutes les questions pour l'examen 2 d'instrumentation et correction de fautes dans les questions d'instrumentation.  
