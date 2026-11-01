@@ -149,25 +149,25 @@ def jeu() :
             colonne1, colonne2, colonne3, colonne4 = st.columns(4)
 
             with colonne1 :
-                if st.button("Je n'en sais rien"):
+                if st.button("Je n'en sais rien", width="content"):
                     scoreq = 0
                     scoremaj(theme, question, scoreq)
                     st.rerun()
 
             with colonne2 :
-                if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr"):
+                if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr", width="content"):
                     scoreq = 1
                     scoremaj(theme, question, scoreq)
                     st.rerun()
 
             with colonne3 :
-                if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%"):
+                if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%", width="content"):
                     scoreq = 2
                     scoremaj(theme, question, scoreq)
                     st.rerun()
 
             with colonne4 :
-                if st.button("Je connait la réponse!!!"):
+                if st.button("Je connait la réponse!!!", width="content"):
                     scoreq = 3
                     scoremaj(theme, question, scoreq)
                     st.rerun()
