@@ -10,7 +10,7 @@ import random
 
 matière_dispo = {
         "météo" : "La météo",
-        "théore" : "Théorie de la radio électricité",
+        "instru" : "L'instrumentation",
 #        "théorie_du_vol" : "La théorie du vol",
 #        "règlementation" : "RAC",
 #        "navigation" : "Nav",
@@ -18,7 +18,7 @@ matière_dispo = {
 
 banque_de_thèmes = {
     "météo": categorie_météo,
-    "théore" : categorie_instru,
+    "instru" : categorie_instru,
 #    "théorie_du_vol": categorie_TDV,
 #    "règlementation": categorie_RAC,
 #    "navigation": categorie_NAV
