@@ -48,8 +48,8 @@ for nom, valeur in initialisation.items():
 
 avertissement = st.container(border = True)
 avertissement.header("AVERTISSEMENT")
-avertissement.write("Cette platforme est utiliser pour différent projet.")
-avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corriger et que les autres ne les rencontres pas.")
+avertissement.write("Cette platforme est utiliser pour différents projets.")
+avertissement.write("Si vous renconter des erreurs, svp m'écrire pour que je puisse les corriger et que les autres ne les rencontrent pas.")
 
 if st.button("Pour réviser la matière des différents cours") :
     st.switch_page("Pages/jeu.py")
@@ -59,10 +59,10 @@ if st.button("Pour pratiquer le calcul mental") :
 
 #Version
 
-st.write("Version 2.3.59")
+st.write("Version 2.3.60")
 
 st.markdown("""
--**2.3.59**  
+-**2.3.60**  
 Correction d'erreurs d'affichage.  
 -**2.3.55**  
 Ajout de toutes les questions pour l'examen 2 d'instrumentation et correction de fautes dans les questions d'instrumentation.  
