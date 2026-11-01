@@ -10,7 +10,7 @@ import random
 
 matière_dispo = {
         "météo" : "La météo",
-        "théore" : "Théorie de la radio électricité",
+        "instru" : "L'instrumentation",
 #        "théorie_du_vol" : "La théorie du vol",
 #        "règlementation" : "RAC",
 #        "navigation" : "Nav",
@@ -18,7 +18,7 @@ matière_dispo = {
 
 banque_de_thèmes = {
     "météo": categorie_météo,
-    "théore" : categorie_instru,
+    "instru" : categorie_instru,
 #    "théorie_du_vol": categorie_TDV,
 #    "règlementation": categorie_RAC,
 #    "navigation": categorie_NAV
@@ -149,25 +149,25 @@ def jeu() :
             colonne1, colonne2, colonne3, colonne4 = st.columns(4)
 
             with colonne1 :
-                if st.button("Je n'en sais rien"):
+                if st.button("Je n'en sais rien", width="stretch", wrap=True):
                     scoreq = 0
                     scoremaj(theme, question, scoreq)
                     st.rerun()
 
             with colonne2 :
-                if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr"):
+                if st.button("Je sais environ la réponse, mais je suis vraiment pas sûr", width="stretch", wrap=True):
                     scoreq = 1
                     scoremaj(theme, question, scoreq)
                     st.rerun()
 
             with colonne3 :
-                if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%"):
+                if st.button("Je suis pas mal sûr de la réponse, mais je ne la connaît pas à 100%", width="stretch", wrap=True):
                     scoreq = 2
                     scoremaj(theme, question, scoreq)
                     st.rerun()
 
             with colonne4 :
-                if st.button("Je connait la réponse!!!"):
+                if st.button("Je connait la réponse!!!", width="stretch", wrap=True):
                     scoreq = 3
                     scoremaj(theme, question, scoreq)
                     st.rerun()
